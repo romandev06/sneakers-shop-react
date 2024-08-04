@@ -1,7 +1,7 @@
 import React, { memo, useContext } from 'react'
 import { AppContext } from '../hooks/useContextCode'
 
-export default memo(function SearchSneakers({ setValue }) {
+export default function SearchSneakers({ setValue }) {
   const { value } = useContext(AppContext)
 
     return (
@@ -18,4 +18,4 @@ export default memo(function SearchSneakers({ setValue }) {
             </div>
         </section>
     )
-})
+}

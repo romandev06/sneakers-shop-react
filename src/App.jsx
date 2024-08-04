@@ -69,7 +69,7 @@ function App() {
 
     if (comparison) {
       setCartItems(prev => prev.filter(item => item.id !== id))
-      console.log('я удаляю одни и те же id:', id)
+      // console.log('я удаляю одни и те же id:', id)
     }
   }
 
@@ -95,17 +95,19 @@ function App() {
   }
 
 
-  let [calculatePrice, setCalculatePrice] = useState([0])
+  const totalSum = cartItems.reduce((acc, item) => acc + item.price, 0)
 
-  const calculateSum = (price) => {
-    setCalculatePrice(prev => Number(prev) + Number(price))
-    // console.log(Number(calculatePrice) + Number(price))
-    // console.log(Number(calculatePrice))
+
+
+  const [orderSneakers, setOrderSneakers] = useState([])
+
+  const getOrderSneakers = (item) => {
+    setOrderSneakers(prev => [...prev, item])
   }
 
 
   return (
-    <AppContext.Provider value={{ cartItems, value, isLoading, value, sneakers, onAddToCart,  favorites, onClickFavorites, deleteCheckedButtonIntoMainPage, setCartOpened, deleteCheckedButtonFromOrderPage, /* */ calculateSum, calculatePrice, setCalculatePrice }}>
+    <AppContext.Provider value={{ cartItems, value, isLoading, value, sneakers, onAddToCart,  favorites, onClickFavorites, deleteCheckedButtonIntoMainPage, setCartOpened, deleteCheckedButtonFromOrderPage, getOrderSneakers, orderSneakers, setOrderSneakers, totalSum }}>
       <div className="wrapper">
         {cartOpened && <Cart onRemoveItemInCart={(id) => onRemoveItemInCart(id)} />}
 

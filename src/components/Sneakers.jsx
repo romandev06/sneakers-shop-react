@@ -3,7 +3,7 @@ import { AppContext } from '../hooks/useContextCode'
 
 
 export default function Sneakers({ id, title, price, img, onPlus, onFavorite }) {
-    const { deleteCheckedButtonIntoMainPage, calculateSum } = useContext(AppContext)
+    const { deleteCheckedButtonIntoMainPage } = useContext(AppContext)
 
     const [checked, setChecked] = useState(false)
 
@@ -17,7 +17,6 @@ export default function Sneakers({ id, title, price, img, onPlus, onFavorite }) 
     const onClickPlus = () => {
         setChecked(!checked)
         onPlus({ id, title, price, img })
-        calculateSum(price)
     }
 
     return (

@@ -1,10 +1,10 @@
-import React, { memo, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { AppContext } from '../hooks/useContextCode';
 
-export default memo(function Header({ open }) {
+export default function Header({ open }) {
 
-  const { calculatePrice, setCalculatePrice } = useContext(AppContext)
+  const { totalSum } = useContext(AppContext)
 
   return (
       <div>
@@ -22,7 +22,7 @@ export default memo(function Header({ open }) {
         <ul className='header-list'>
           <li style={{cursor: 'pointer'}} onClick={open}>
           <button style={{cursor: 'pointer'}}><img src="/img/cart.svg" alt="" /></button>
-            <span>{calculatePrice}</span>
+            <span>{totalSum} руб.</span>
           </li>
           <Link to='/favorites'>
             <li style={{cursor: 'pointer'}}>
@@ -42,4 +42,4 @@ export default memo(function Header({ open }) {
     </header>
       </div>
   )
-})
+}

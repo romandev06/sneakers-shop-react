@@ -2,7 +2,7 @@ import React, { memo, useContext } from 'react';
 import { AppContext } from '../hooks/useContextCode';
 
 
-export default memo(function Bookmarks({ onClickFavorites }) {
+export default function Bookmarks({ onClickFavorites }) {
 
     const { favorites } = useContext(AppContext)
 
@@ -31,4 +31,4 @@ export default memo(function Bookmarks({ onClickFavorites }) {
             </section>
         </section>
     )
-})
+}

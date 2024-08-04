@@ -502,3 +502,12 @@ code {
 .checkout-order {
   margin-bottom: 400px;
 }
+
+.order-sneakers {
+  display: grid;
+  grid-template-columns: repeat(4, 210px);
+  place-content: center;
+  place-items: center;
+  gap: 40px;
+  margin-top: 20px;
+}
