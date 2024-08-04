@@ -495,10 +495,6 @@ code {
   transition: transform 0.16s ease-in-out, -webkit-transform 0.16s ease-in-out;
 }
 
-.order-section {
-  padding: 15px;
-}
-
 .checkout-order {
   margin-bottom: 400px;
 }

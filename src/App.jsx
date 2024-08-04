@@ -101,8 +101,8 @@ function App() {
 
   const [orderSneakers, setOrderSneakers] = useState([])
 
-  const getOrderSneakers = (item) => {
-    setOrderSneakers(prev => [...prev, item])
+  const getOrderSneakers = (cartItem) => {
+    setOrderSneakers(prev => [...prev, cartItem])
   }
 
 
