@@ -106,9 +106,36 @@ function App() {
   }
 
 
+
+
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('darkTheme')
+    return savedTheme === 'true'
+  })
+
+  const changeTheme = () => {
+    setTheme(prev => !prev)
+  }
+
+  useEffect(() => {
+    localStorage.setItem('darkTheme', theme);
+    if (theme) {
+      document.body.classList.add('dark')
+    } else {
+      document.body.classList.remove('dark')
+    }
+  }, [theme])
+
+
   return (
     <AppContext.Provider value={{ cartItems, value, isLoading, value, sneakers, onAddToCart,  favorites, onClickFavorites, deleteCheckedButtonIntoMainPage, setCartOpened, deleteCheckedButtonFromOrderPage, getOrderSneakers, orderSneakers, setOrderSneakers, totalSum }}>
       <div className="wrapper">
+      <button className='change-theme__btn' onClick={changeTheme}>
+        <svg width={35} xmlns="http://www.w3.org/2000/svg" fill={theme ? 'white' : 'rgba(0, 0, 0, 0.4)'} viewBox="0 0 24 24" stroke-width="1.5" stroke={theme ? 'white' : 'rgba(0, 0, 0, 0.4)'} class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </button>
+
         {cartOpened && <Cart onRemoveItemInCart={(id) => onRemoveItemInCart(id)} />}
 
         <Routes>
